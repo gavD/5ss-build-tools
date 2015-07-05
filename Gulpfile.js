@@ -9,6 +9,8 @@ var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
+var imagemin = require('gulp-imagemin');
+var jpegtran = require('imagemin-jpegtran');
 
 // This is a synchronous task - it has a callback on completion. This prevents
 // any dependant tasks from running until clean is good and finished.
@@ -41,11 +43,20 @@ gulp.task('scripts', ['clean'], function() {
       .pipe(gulp.dest('build/js'));
 });
 
+gulp.task('images', ['clean'], function() {
+  return gulp.src('src/img/*')
+      .pipe(imagemin({
+        progressive: true,
+        use: [jpegtran()]
+      }))
+      .pipe(gulp.dest('build/img'));
+});
+
 // Task that runs the unit tests and lint
 gulp.task('quality', ['lint']);
 
-// The build task - relies on 'clean', 'quality', 'styles', and 'scripts'
-gulp.task('build', ['clean', 'quality', 'styles', 'scripts'], function() {
+// The build task - relies on 'clean', 'quality', 'styles', 'scripts', and 'images'
+gulp.task('build', ['clean', 'quality', 'styles', 'scripts', 'images'], function() {
   return gulp.src(['src/*.html'])
       .pipe(minifyHTML())
       .pipe(gulp.dest('build'));
