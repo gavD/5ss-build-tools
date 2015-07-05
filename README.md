@@ -37,8 +37,16 @@ npm install
 Running the Gulp build
 --
 
+Running it once:
+
 ```bash
 gulp
+```
+
+Running it in "watch" mode, with a local webserver on http://localhost:3003/ :
+
+```bash
+gulp dev
 ```
 
 Running the Grunt build
@@ -48,3 +56,8 @@ Running the Grunt build
 grunt
 ```
 
+Running it in "watch" mode, with a local webserver on http://localhost:3004/ :
+
+```bash
+grunt dev
+```

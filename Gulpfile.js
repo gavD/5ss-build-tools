@@ -52,11 +52,8 @@ gulp.task('images', ['clean'], function() {
       .pipe(gulp.dest('build/img'));
 });
 
-// Task that runs the unit tests and lint
-gulp.task('quality', ['lint']);
-
-// The build task - relies on 'clean', 'quality', 'styles', 'scripts', and 'images'
-gulp.task('build', ['clean', 'quality', 'styles', 'scripts', 'images'], function() {
+// The build task - relies on 'clean', 'lint', 'styles', 'scripts', and 'images'
+gulp.task('build', ['clean', 'lint', 'styles', 'scripts', 'images'], function() {
   return gulp.src(['src/*.html'])
       .pipe(minifyHTML())
       .pipe(gulp.dest('build'));
@@ -76,8 +73,5 @@ gulp.task('serve', function() {
 gulp.task('dev', ['build', 'serve'], function() {
   gulp.watch(['src/**/*', '*.js'], ['default']);
 });
-
-// alias watch == dev
-gulp.task('watch', ['dev']);
 
 gulp.task('default', ['build']);
