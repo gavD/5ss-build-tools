@@ -43,8 +43,12 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 3004,
-          base: 'build',
-          index: 'index.html'
+          base: {
+            path: 'build',
+            options: {
+              index: 'index.html'
+            }
+          }
         }
       }
     },
@@ -77,7 +81,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-  grunt.registerTask('default', ['clean', 'jshint', 'less', 'cssmin', 'uglify', 'imagemin']);
+  grunt.registerTask('default', ['clean', 'jshint', 'less', 'cssmin', 'uglify', 'imagemin', 'htmlmin']);
 
   grunt.registerTask('dev', ['default', 'connect', 'watch']);
 };
