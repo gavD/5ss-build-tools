@@ -1,0 +1,25 @@
+{
+  "name": "5ss-build-tools",
+  "version": "1.0.0",
+  "description": "Example project for the 5 Simple Steps Fast Reads book Build Tools",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gavd/5ss-build-tools.git"
+  },
+  "keywords": [
+    "grunt",
+    "gulp",
+    "build",
+    "tools",
+    "javascript",
+    "automation",
+    "styles"
+  ],
+  "author": "Gavin Davies <gavin@radify.io> (http://radify.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gavd/5ss-build-tools/issues"
+  },
+  "homepage": "https://github.com/gavd/5ss-build-tools#readme"
+}
