@@ -11,6 +11,7 @@ var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
 var imagemin = require('gulp-imagemin');
 var jpegtran = require('imagemin-jpegtran');
+var livereload = require('gulp-livereload')
 
 // This is a synchronous task - it has a callback on completion. This prevents
 // any dependant tasks from running until clean is good and finished.
@@ -56,7 +57,8 @@ gulp.task('images', ['clean'], function() {
 gulp.task('build', ['clean', 'lint', 'styles', 'scripts', 'images'], function() {
   return gulp.src(['src/*.html'])
       .pipe(minifyHTML())
-      .pipe(gulp.dest('build'));
+      .pipe(gulp.dest('build'))
+      .pipe(livereload());
 });
 
 // Task to serve this locally using gulp-connect. Not for production usage.
@@ -69,9 +71,10 @@ gulp.task('serve', function() {
   console.log('Demo server started at localhost:3003');
 });
 
-// On change to JavaScript files, run the default task, then run the local server. Trigger rebuilds on any changes.
+// On change to local files, run the default task, then run the local server. Trigger rebuilds on any changes.
 gulp.task('dev', ['build', 'serve'], function() {
-  gulp.watch(['src/**/*', '*.js'], ['default']);
+  livereload.listen();
+  gulp.watch(['src/**/*', '*.js', 'src/styles/**/*.less', 'src/img/**/*'], ['default']);
 });
 
 gulp.task('default', ['build']);

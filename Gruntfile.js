@@ -57,7 +57,8 @@ module.exports = function(grunt) {
         files: ['src/**/*'],
         tasks: ['default'],
         options: {
-          spawn: false
+          spawn: false,
+          livereload: true
         }
       }
     },
