@@ -11,7 +11,7 @@ var uglify = require('gulp-uglify');
 var minifyHTML = require('gulp-minify-html');
 var imagemin = require('gulp-imagemin');
 var jpegtran = require('imagemin-jpegtran');
-var livereload = require('gulp-livereload')
+var livereload = require('gulp-livereload');
 
 // This is a synchronous task - it has a callback on completion. This prevents
 // any dependant tasks from running until clean is good and finished.
